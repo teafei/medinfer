@@ -4,7 +4,7 @@
 
 该版本通过已登录的 GitHub 网页按目录上传，包含源码、原创合成数据、双语文档、真实 MLX 评测记录、截图和 CI 工作流。虚拟环境、模型权重、本地 SQLite 和密钥不进入仓库。GitHub 连接器的写入接口在发布时返回 403，因此使用网页完成发布。
 
-远端检查以 [GitHub Actions](https://github.com/teafei/medinfer/actions) 的实际运行状态为准。上传工作流后才会触发首次检查；未取得成功结果前不宣称 CI 通过。云端 NVIDIA/vLLM 与临床能力仍保持未验证状态。
+已确认 [首次成功的远端检查](https://github.com/teafei/medinfer/actions/runs/40207616589)：Python 3.11 / 3.12 / 3.13 三组均为 37 项测试通过，Docker 构建、启动和鉴权模型接口检查通过。最新结果以 [Actions](https://github.com/teafei/medinfer/actions) 为准。云端 NVIDIA/vLLM 与临床能力仍保持未验证状态。
 
 获取和体验项目：
 

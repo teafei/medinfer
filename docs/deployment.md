@@ -2,7 +2,7 @@
 
 ## Install
 
-Python 3.11–3.13 are CI targets; the local validated environment uses Python 3.12. Use the committed `uv.lock` with [uv](https://docs.astral.sh/uv/) for a frozen dependency set:
+Python 3.11–3.13 passed the GitHub Actions test matrix; the local validated environment uses Python 3.12. Use the committed `uv.lock` with [uv](https://docs.astral.sh/uv/) for a frozen dependency set:
 
 ```bash
 uv sync --locked --extra dev

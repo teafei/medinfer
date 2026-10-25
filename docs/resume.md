@@ -7,7 +7,7 @@ Python / FastAPI / MLX / Ollama / vLLM API / SQLite / pytest / Docker
 
 - 构建统一流式 Backend Interface 与 FastAPI OpenAI-compatible chat API，适配 MLX、Ollama、vLLM 协议；在 Apple Silicon 本机运行 DeepSeek-R1-Distill 1.5B 四位量化模型。
 - 设计覆盖信息抽取、文本问答、病历摘要的 36 项合成任务，区分未知/阴性与思考/最终答案，记录 TTFT、P50/P95 延迟、token 吞吐、截断及资源范围，保留逐请求原始证据。
-- 实现 SQLite 结果持久化、Web 可视化与 JSON/CSV 导出，提供自动化测试、Docker 与 CI 配置；完成本机并发 1/4 实测及干净环境安装复现。
+- 实现 SQLite 结果持久化、Web 可视化与 JSON/CSV 导出，通过 Python 3.11–3.13 测试矩阵与 Docker 远端 CI；完成本机并发 1/4 实测及干净环境安装复现。
 
 若版面只允许两条，可保留前两条，并在第一条末尾补“配套可视化、持久化与自动化测试”。不建议把单次小模型吞吐数字放在主简历里；硬件、token预算、量化和样本数会占用大量解释空间。详细结果与质量失败保留在 GitHub，技术面试时可追溯。
 
