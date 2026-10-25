@@ -21,8 +21,8 @@ Run a small DeepSeek-R1-Distill model on Apple Silicon, expose a common chat API
 | Load measurement | TTFT, tokens/s, P50/P95, request throughput, concurrency | Real c1 and c4 runs; scripts for c1/4/8/16 |
 | Resources | Gateway RSS, MLX Metal peak; optional local NVIDIA device sampling | RSS/Metal measured; NVIDIA unavailable |
 | Persistence / dashboard | SQLite, per-request outputs, compare charts, JSON/CSV | Tests and browser flow exercised |
-| Automated checks | 37 tests, Ruff, locked dependencies, installable wheel | Local and clean environment passed on Python 3.12 |
-| Docker / GitHub Actions | Non-root image, compose, CPU test matrix, Docker smoke job | Configured; Docker and remote CI not executed |
+| Automated checks | 37 tests, Ruff, locked dependencies, installable wheel | Local Python 3.12 and GitHub Ubuntu Python 3.11 / 3.12 / 3.13 passed |
+| Docker / GitHub Actions | Non-root image, compose, CPU test matrix, Docker smoke job | [All four remote jobs passed](https://github.com/teafei/medinfer/actions/runs/40207616589); image build, startup and authenticated models endpoint verified |
 
 This is an engineering evaluation tool, not a clinical decision system. All bundled records are original synthetic text. No real patient data, credentials or model weights are committed. Public repository: [teafei/medinfer](https://github.com/teafei/medinfer). [Publication and validation status](docs/publishing.md) are recorded explicitly.
 

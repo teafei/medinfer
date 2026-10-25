@@ -13,8 +13,8 @@ MedInfer 将 MLX、Ollama、vLLM 的流式推理映射为统一 Backend Interfac
 
 - **真实运行**：Apple M5 / 16 GB 上的 DeepSeek-R1-Distill-Qwen-1.5B 四位量化 MLX 推理；并发 1/4 各 36 请求；真实 HTTP 下 OpenAI SDK 流式及非流式调用。
 - **工程实现**：Ollama NDJSON、vLLM SSE 适配；统一接口；FastAPI；网页；SQLite；JSON/CSV；TTFT、tokens/s、P50/P95、请求吞吐、RSS/Metal 资源指标与可选本地 NVIDIA 采样。
-- **测试通过**：37 项自动化测试，在本机开发环境及不安装 MLX 的干净环境中通过；完成 wheel 安装与无模型 smoke test。
-- **尚未实跑**：真实 Ollama、NVIDIA/vLLM、7B/14B/32B 对照、Docker 构建、远端 GitHub Actions。相关接口、部署文档和工作流已经提供，不能写成已验证成果。
+- **测试通过**：37 项自动化测试，在本机及干净环境中通过；[GitHub Actions](https://github.com/teafei/medinfer/actions/runs/40207616589) 的 Python 3.11 / 3.12 / 3.13 三组均为 37 项通过，Docker 构建、启动及鉴权接口检查通过。
+- **尚未实跑**：真实 Ollama、NVIDIA/vLLM、7B/14B/32B 对照。相关接口、部署文档和工作流已经提供，不能写成已验证成果。
 
 原始数据为 **12 个原创合成病例 × 3 类任务，共 36 项**，没有真实患者记录。任务共享病例，并非 36 位独立患者。QA 是根据原文作答，不是临床知识考试；摘要指标是词汇代理指标，不是临床事实性认证。本项目不用于诊疗决策。
 
