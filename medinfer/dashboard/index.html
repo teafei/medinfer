@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <meta name="google" content="notranslate" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MedInfer · Inference Lab</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <aside>
+      <a class="brand" href="/" aria-label="MedInfer home"
+        ><span class="mark">m<span>i</span></span> MedInfer</a
+      >
+      <div class="eyebrow nav-title">WORKSPACE / 01</div>
+      <a class="nav active" href="#overview"
+        >◫ <span>Inference lab</span><b>01</b></a
+      >
+      <a class="nav" href="#experiment">↗ <span>New experiment</span></a>
+      <a class="nav" href="#playground">⌘ <span>Playground</span></a>
+      <a class="nav" href="#history">≡ <span>Run history</span></a>
+      <div class="sidebar-bottom">
+        <span class="pulse"></span> LOCAL WORKSPACE<br /><small
+          >Synthetic data. Inspectable evidence.</small
+        >
+        <div class="version">v0.1 · Research engineering</div>
+      </div>
+    </aside>
+    <main id="overview">
+      <header>
+        <div class="breadcrumbs">Workspace <span>/</span> Inference lab</div>
+        <div class="header-right">
+          <span id="mode" class="badge">CONNECTING</span
+          ><span class="avatar">MI</span>
+        </div>
+      </header>
+      <div class="page">
+        <div class="intro">
+          <div>
+            <div class="eyebrow teal">
+              PRIVATE INFERENCE / MEASURABLE TRADEOFFS
+            </div>
+            <h1>Your models. Your evidence.</h1>
+            <p>
+              Run clinical text workloads. Compare speed, resources and task
+              quality.
+            </p>
+          </div>
+          <a
+            class="button secondary"
+            href="/docs"
+            target="_blank"
+            rel="noopener"
+            >API reference ↗</a
+          >
+        </div>
+        <div class="notice" id="notice" role="status">
+          Connecting to the local gateway…
+        </div>
+        <div class="keybox">
+          <label for="api-key"
+            >Gateway API key
+            <small>Optional · kept in this page only</small></label
+          ><input
+            id="api-key"
+            type="password"
+            placeholder="Enter only if gateway authentication is enabled"
+            autocomplete="off"
+          /><button id="connect" class="secondary">Connect</button>
+        </div>
+        <section class="runtime">
+          <div>
+            <span class="eyebrow">ACTIVE RUNTIME</span>
+            <h2 id="runtime-name">—</h2>
+            <span id="model-name" class="mono">—</span>
+          </div>
+          <div class="runtime-facts">
+            <div><span>Endpoint</span><b>Local gateway</b></div>
+            <div><span>Dataset</span><b>36 synthetic tasks</b></div>
+            <div><span>Data policy</span><b>Original vignettes only</b></div>
+          </div>
+        </section>
+        <div class="section-title">
+          <h2>Latest experiment</h2>
+          <span id="latest-label" class="muted"
+            >Waiting for a measured run</span
+          >
+        </div>
+        <section class="metrics" aria-label="Latest benchmark metrics">
+          <div class="metric">
+            <span>FIRST OUTPUT · P50</span><strong id="ttft">—</strong
+            ><small>First text or reasoning chunk</small>
+          </div>
+          <div class="metric">
+            <span>LATENCY · P95</span><strong id="p95">—</strong
+            ><small>Successful requests only</small>
+          </div>
+          <div class="metric">
+            <span>OUTPUT THROUGHPUT</span><strong id="tps">—</strong
+            ><small>Reported tokens / run wall time</small>
+          </div>
+          <div class="metric">
+            <span>COMPLETED REQUESTS</span><strong id="success">—</strong
+            ><small id="error-rate">No measurements yet</small>
+          </div>
+        </section>
+        <section class="chart-grid">
+          <div class="panel">
+            <div class="panel-heading">
+              <h2>Latency across runs</h2>
+              <span class="legend"><i></i> P50 <i class="amber"></i> P95</span>
+            </div>
+            <div id="latency-chart" class="chart empty">
+              Your measured runs will appear here.
+            </div>
+            <div class="chart-caption">
+              Seconds · only runs with the same dataset and settings are
+              directly comparable.
+            </div>
+          </div>
+          <div class="panel quality">
+            <div class="panel-heading">
+              <h2>Task diagnostics</h2>
+              <span class="badge subtle">SYNTHETIC SUITE</span>
+            </div>
+            <div id="quality-chart" class="quality-body empty">
+              Run the suite to inspect task scores.
+            </div>
+            <div class="chart-caption">
+              Summary coverage is a lexical proxy, not clinical factuality.
+            </div>
+          </div>
+        </section>
+        <section class="panel" id="experiment">
+          <div class="panel-heading">
+            <div>
+              <div class="eyebrow teal">DESIGN AN EXPERIMENT</div>
+              <h2>Benchmark runner</h2>
+            </div>
+            <span class="muted"
+              >Closed-loop load · one experiment at a time</span
+            >
+          </div>
+          <form id="benchmark-form">
+            <div class="form-grid">
+              <label
+                >Workload<select id="task">
+                  <option value="all">All three tasks</option>
+                  <option value="extraction">Clinical extraction</option>
+                  <option value="qa">Passage-grounded QA</option>
+                  <option value="summary">Clinical summary</option>
+                </select></label
+              ><label
+                >Concurrency<select id="concurrency">
+                  <option>1</option>
+                  <option>4</option>
+                  <option>8</option>
+                  <option>16</option>
+                </select></label
+              ><label
+                >Repetitions<input
+                  id="repetitions"
+                  type="number"
+                  value="1"
+                  min="1"
+                  max="20" /></label
+              ><label
+                >Max output tokens<input
+                  id="max-tokens"
+                  type="number"
+                  value="1024"
+                  min="8"
+                  max="4096" /></label
+              ><label
+                >Warmup requests<input
+                  id="warmup"
+                  type="number"
+                  value="1"
+                  min="0"
+                  max="5"
+              /></label>
+            </div>
+            <div class="form-footer">
+              <p>
+                Temperature 0 · seed 42 · warmup excluded · fixed dataset hash
+              </p>
+              <button type="submit" id="run-button">
+                Run benchmark <span>↗</span>
+              </button>
+            </div>
+          </form>
+          <p id="run-progress" role="status" aria-live="polite"></p>
+        </section>
+        <section class="panel" id="history">
+          <div class="panel-heading">
+            <h2>Run history</h2>
+            <button id="refresh" class="secondary">Refresh ↻</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>EXPERIMENT</th>
+                  <th>BACKEND / MODEL</th>
+                  <th>LOAD</th>
+                  <th>STATUS</th>
+                  <th>P50 / P95</th>
+                  <th>OUTPUT TOK/S</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="runs">
+                <tr>
+                  <td colspan="7" class="empty">
+                    No runs yet. Start an experiment above.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="panel" id="run-detail" hidden>
+          <div class="panel-heading">
+            <h2>Request evidence</h2>
+            <div>
+              <button id="json-export" class="secondary">Export JSON ↓</button
+              ><button id="csv-export" class="secondary">Export CSV ↓</button>
+            </div>
+          </div>
+          <p id="detail-meta" class="muted mono"></p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>CASE</th>
+                  <th>LATENCY</th>
+                  <th>FIRST OUTPUT</th>
+                  <th>FINISH</th>
+                  <th>SCORES / ERROR</th>
+                </tr>
+              </thead>
+              <tbody id="records"></tbody>
+            </table>
+          </div>
+          <details>
+            <summary>Raw run evidence</summary>
+            <pre id="raw-run"></pre>
+          </details>
+        </section>
+        <section class="panel" id="playground">
+          <div class="panel-heading">
+            <div>
+              <div class="eyebrow teal">EXPLORE THE RUNTIME</div>
+              <h2>Inference playground</h2>
+            </div>
+            <span class="muted">Inputs are not stored by the gateway</span>
+          </div>
+          <form id="chat-form">
+            <label for="prompt">Synthetic prompt</label
+            ><textarea id="prompt" rows="4" maxlength="20000">
+A synthetic 68-year-old man reports low back pain for 3 months. MRI shows an L1 compression fracture. Blood culture was not ordered. Summarize the documented facts in two sentences. Do not infer a negative culture.</textarea
+            >
+            <div class="form-footer">
+              <span id="chat-metrics" class="muted"
+                >OpenAI-compatible chat endpoint</span
+              ><button id="chat-button" type="submit">Generate ↗</button>
+            </div>
+          </form>
+          <pre id="chat-output" class="output" aria-live="polite">
+Your model output will appear here.</pre
+          >
+        </section>
+        <footer>
+          <span>MedInfer / Private Medical LLM Inference & Benchmark</span
+          ><span>Engineering evaluation only · not for clinical decisions</span>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
