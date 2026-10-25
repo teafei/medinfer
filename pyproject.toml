@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medinfer"
+version = "0.1.0"
+description = "Private medical LLM inference and reproducible workload benchmarks"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn>=0.34,<1", "httpx>=0.28,<1",
+  "psutil>=7,<8", "pydantic>=2.10,<3",
+]
+
+[project.optional-dependencies]
+mlx = ["mlx-lm>=0.31,<0.34; sys_platform == 'darwin' and platform_machine == 'arm64'"]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.25,<2", "ruff>=0.11,<1", "openai>=1.70,<3"]
+
+[project.scripts]
+medinfer = "medinfer.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["medinfer*"]
+
+[tool.setuptools.package-data]
+medinfer = ["dashboard/*", "datasets/*.jsonl"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B", "UP"]

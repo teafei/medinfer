@@ -1,0 +1,16 @@
+services:
+  medinfer:
+    build: .
+    ports: ["127.0.0.1:8000:8000"]
+    environment:
+      MEDINFER_BACKEND: ${MEDINFER_BACKEND:-mock}
+      MEDINFER_MODEL: ${MEDINFER_MODEL:-mock-synthetic}
+      MEDINFER_BASE_URL: ${MEDINFER_BASE_URL:-http://host.docker.internal:11434}
+      MEDINFER_API_KEY: ${MEDINFER_API_KEY:?Set a gateway API key before docker compose up}
+      MEDINFER_UPSTREAM_API_KEY: ${MEDINFER_UPSTREAM_API_KEY:-}
+      MEDINFER_DB: /app/results/medinfer.sqlite3
+    volumes: ["results:/app/results"]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    restart: unless-stopped
+volumes:
+  results:
