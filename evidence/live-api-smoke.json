@@ -1,0 +1,64 @@
+{
+  "kind": "live OpenAI SDK over HTTP to actual MLX gateway",
+  "synthetic_prompt": "Reply with just READY.",
+  "model": "mlx-community/DeepSeek-R1-Distill-Qwen-1.5B-4bit",
+  "nonstream": {
+    "id": "chatcmpl-ec89cd1d735f469496ca8fa7b5cdfc4a",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "\n\nReady to help you with your question or problem?",
+          "refusal": null,
+          "role": "assistant",
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": null,
+          "reasoning_content": "Okay, so I need to figure out how to respond to the user's message. They said, \"Reply with just READY.\" Hmm, that's interesting. I'm not entirely sure what they mean by \"READY.\" Maybe they're asking for a response that's ready to help, like \"Ready to help you with your question or problem?\" That sounds plausible.\n\nI should consider the context. The user didn't provide any specific information, so I can't be sure. But since they're asking for a response that's ready, I should respond in a way that's open and inviting. Maybe something like, \"Ready to help you with your question or problem?\" That way, they know I'm prepared to assist them.\n\nI should make sure my response is concise and doesn't include any unnecessary words. Keeping it simple is key. Also, I should avoid any assumptions about what they need help with. Just a general response that's ready to assist.\n\nSo, putting it all together, I think the best way is to respond with, \"Ready to help you with your question or problem?\" That should cover it without any issues.\n"
+        }
+      }
+    ],
+    "created": 1792927101,
+    "model": "mlx-community/DeepSeek-R1-Distill-Qwen-1.5B-4bit",
+    "object": "chat.completion",
+    "moderation": null,
+    "service_tier": null,
+    "system_fingerprint": null,
+    "usage": {
+      "completion_tokens": 241,
+      "prompt_tokens": 10,
+      "total_tokens": 251,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null
+    },
+    "medinfer_metrics": {
+      "latency_s": 3.487326416070573,
+      "ttft_s": 1.4215920000569895,
+      "first_content_s": 3.361566166044213,
+      "prompt_tokens": 10,
+      "completion_tokens": 241,
+      "tokens_s": 116.66552976595965,
+      "finish_reason": "stop",
+      "extra": {
+        "mlx_metal_peak_gb": 1.021914668
+      }
+    },
+    "simulated": false
+  },
+  "stream": {
+    "output": "\n\nReady to help you with your question or problem?",
+    "reasoning": "Okay, so I need to figure out how to respond to the user's message. They said, \"Reply with just READY.\" Hmm, that's interesting. I'm not entirely sure what they mean by \"READY.\" Maybe they're asking for a response that's ready to help, like \"Ready to help you with your question or problem?\" That sounds plausible.\n\nI should consider the context. The user didn't provide any specific information, so I can't be sure. But since they're asking for a response that's ready, I should respond in a way that's open and inviting. Maybe something like, \"Ready to help you with your question or problem?\" That way, they know I'm prepared to assist them.\n\nI should make sure my response is concise and doesn't include any unnecessary words. Keeping it simple is key. Also, I should avoid any assumptions about what they need help with. Just a general response that's ready to assist.\n\nSo, putting it all together, I think the best way is to respond with, \"Ready to help you with your question or problem?\" That should cover it without any issues.\n",
+    "usage": {
+      "completion_tokens": 241,
+      "prompt_tokens": 10,
+      "total_tokens": 251,
+      "completion_tokens_details": null,
+      "prompt_tokens_details": null
+    },
+    "finish_reason": "stop",
+    "chunks": 242
+  }
+}

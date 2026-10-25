@@ -1,0 +1,18 @@
+{
+  "os": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "processor": "arm",
+  "python": "3.12.14",
+  "system_memory_bytes": 17179869184,
+  "packages": {
+    "medinfer": "0.1.0",
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "httpx": "0.28.1",
+    "fastapi": "0.162.0",
+    "psutil": "7.2.2"
+  },
+  "cpu_brand": "Apple M5",
+  "macos_version": "27.0.1",
+  "captured_at_local": "2026-10-25 Asia/Shanghai"
+}
